@@ -26,3 +26,7 @@ push_image:
 variables:
   DOCKER_USERNAME: $DOCKER_USERNAME
   DOCKER_PASSWORD: $DOCKER_PASSWORD
+
+default:
+  tags:
+    - runner-l
