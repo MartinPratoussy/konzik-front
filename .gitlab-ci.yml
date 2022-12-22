@@ -13,7 +13,7 @@ build-image:
     - docker buildx inspect --bootstrap
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - docker buildx build --push --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t thomasoss/testrepo:latest .
-  #when: manual
+  when: manual
 
   only:
     - master
