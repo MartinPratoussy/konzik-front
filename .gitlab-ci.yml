@@ -4,15 +4,15 @@ stages:
   - build
   - push
 
-build:
+build-image:
   stage: build
   script:
     - docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - docker buildx create --use
-    - docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t thomasoss/testrepo:latest .
+    - docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t thomasoss/testrepo:latest .
   #when: manual
 
-push_image:
+push-image:
   stage: push
   script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
