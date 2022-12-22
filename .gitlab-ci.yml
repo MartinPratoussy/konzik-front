@@ -1,0 +1,26 @@
+image: docker:latest
+
+stages:
+  - build
+  - push
+
+build:
+  stage: build
+  script:
+    - docker build -t thomasoss/testrepo:latest -f Dockerfile .
+  when: manual
+
+push_image:
+  stage: push
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push thomasoss/testrepo:latest
+  dependencies:
+    - build
+
+  only:
+    - master
+
+variables:
+  DOCKER_USERNAME: $DOCKER_USERNAME
+  DOCKER_PASSWORD: $DOCKER_PASSWORD
