@@ -7,8 +7,8 @@ stages:
 build:
   stage: build
   script:
-    - docker build -t thomasoss/testrepo:latest -f Dockerfile .
-  when: manual
+    - docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t thomasoss/testrepo:latest --push .
+  #when: manual
 
 push_image:
   stage: push
