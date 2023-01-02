@@ -8,9 +8,7 @@ const showModal = ref(false)
 
 <template>
   <main>
-    <div v-if="showModal">
-      <AddEventForm />
-    </div>
+    <AddEventForm v-if="showModal" @close="showModal = false" />
     <h2 class="text-5xl pt-4 font-bold flex justify-center w-2/4">Evenements</h2>
     <div>
       <PlanningTab />

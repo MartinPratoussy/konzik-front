@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import axios from 'axios'
 
 export const useEventStore = defineStore('eventStore', {
   state: () => ({
@@ -27,6 +28,11 @@ export const useEventStore = defineStore('eventStore', {
       this.addEvent(101, "11/10/2022", "Sting", "Pop", "Le fil", "Saint-Etienne", "France")
       this.addEvent(102, "08/12/2022", "Gazo", "Rap", "Transbo", "Lyon", "France")
       this.addEvent(101, "11/10/2022", "Sting", "Pop", "Le fil", "Saint-Etienne", "France")
+
+      // let fetched_response = {}
+      // axios.get('localhost/all').then((response) => {console.log(response), fetched_response = response})
+      // fetched_response.forEach(el => this.addEvent(el.idEvent, el.date, el.artist, el.genre, el.location, el.city, el.country));
+      
     },
   }
 })

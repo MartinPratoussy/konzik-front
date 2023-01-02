@@ -1,9 +1,29 @@
+<script setup>
+import { ref } from 'vue'
+import axios from 'axios'
+
+const usernameData = ref("")
+const emailData = ref("")
+const passwordData =  ref("")
+
+const registerClick = () => {
+    const username = usernameData.value
+    const email = emailData.value
+    const password = passwordData.value
+    const role = [username, "user"]
+
+    const sendData = {username, email, password, role}
+    console.log(sendData)
+    //axios.post("localhost/api/auth/signup",sendData).then((response) => console.log(response))
+}
+</script>
+
 <template>
     <div class="flex absolute my-40 ml-80">
         <div class="block p-6 rounded-xl shadow-2xl bg-white w-96 h-80">
             <h1 class="w-full text-2xl font-bold text-center pb-5">Inscrivez-vous</h1>
             <div class="form-group mb-6">
-                <input type="text" class="form-control
+                <input name="username" v-model="usernameData" type="text" class="form-control
                 block
                 w-full
                 px-3
@@ -21,7 +41,7 @@
                 placeholder="Nom d'utilisateur">
             </div>
             <div class="form-group mb-6">
-            <input type="email" class="form-control block
+            <input name="email" v-model="emailData" type="email" class="form-control block
                 w-full
                 px-3
                 py-1.5
@@ -34,11 +54,11 @@
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="emailInput"
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Email">
             </div>
             <div class="form-group mb-6">
-            <input type="password" class="form-control block
+            <input name="password" v-model="passwordData" type="password" class="form-control block
                 w-full
                 px-3
                 py-1.5
@@ -51,10 +71,10 @@
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="passwordInput"
+                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Mot de passe">
             </div>
-            <button class="
+            <button @click="registerClick" class="
             w-full
             px-6
             py-2.5

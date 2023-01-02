@@ -1,12 +1,12 @@
 <script setup>
 import PlanningElement from "./PlanningElement.vue";
 import { ref } from "vue";
-import { useEventStore } from "@/stores/events"
+import { useAuthStore } from '@/stores/auth';
 
-const eventStore = useEventStore()
-eventStore.reloadEvents()
+const eventStore = useAuthStore()
+eventStore.reloadUserEvents()
 
-const listEvents = ref(eventStore.getEvents);
+const listEvents = ref(eventStore.getUserEvents);
 </script>
 
 <template>

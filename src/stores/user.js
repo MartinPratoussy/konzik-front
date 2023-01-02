@@ -21,14 +21,6 @@ export const useUserStore = defineStore('userStore', {
     getUserData() {
         return this.user
     },
-
-    // Check if there is a user
-    userConnected() {
-      if (this.getUserData["idUser"] !== undefined) {
-        return true
-      }
-      return false
-    }
   },
 
   actions: {
@@ -36,20 +28,5 @@ export const useUserStore = defineStore('userStore', {
     addCustomEvent(idEvent, date, artist, genre, location, city, country) {
         this.userEvents.push({idEvent, date, artist, genre, location, city, country})
     },
-
-    // Add offical event in user's events store
-    addOfficialEvent(event) {
-        this.userEvents.push(event)
-    },
-
-    // Setup the user
-    userSetup(user) {
-        console.log("this.user['userID'] BEFORE")
-        console.log(this.user['userID'])
-        this.user['userID'] = user['userID']
-
-        console.log("this.user['userID'] AFTER")
-        console.log(this.user['userID'])
-    }
   }
 })

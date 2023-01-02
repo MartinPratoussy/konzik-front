@@ -1,7 +1,6 @@
 <script setup>
-import { RouterLink } from "vue-router";
 import { useAuthStore } from '@/stores/auth';
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const username = ref("")
 const password =  ref("")
