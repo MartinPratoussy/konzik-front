@@ -55,7 +55,7 @@ export const useAuthStore = defineStore({
         // Add new event in the store
         reloadUserEvents() {
             // Clear
-            this.events = []
+            this.userEvents = []
     
             // Add
             this.addUserEvent(101, "11/10/2022", "Sting", "Pop", "Le fil", "Saint-Etienne", "France")
