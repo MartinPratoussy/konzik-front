@@ -18,11 +18,11 @@ build:
     - npm ci
     - npm run build
     - cd /builds/hllmp/konzik-front
-    - ls -l ../../../code/dist/
+    - ls -l ../../../code/dist/*
   artifacts:
     name: vueApp
     paths:
-      - ../../../code/dist/
+      - ../../../code/dist/*
   when: manual
 
 build-image:
