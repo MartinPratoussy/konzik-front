@@ -23,7 +23,7 @@ deploy-image:
     - echo "$OVH" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh debian@ssh debian@162.19.68.172
+    #- ssh debian@ssh debian@162.19.68.172
 
   only:
     - master
