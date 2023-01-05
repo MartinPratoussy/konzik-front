@@ -21,10 +21,8 @@ deploy-image:
   script:
     - eval $(ssh-agent -s)
     - echo "$OVH" | tr -d '\r' | ssh-add -
-
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-
     - ssh debian@ssh debian@162.19.68.172
 
   only:
