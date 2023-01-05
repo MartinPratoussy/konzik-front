@@ -12,11 +12,9 @@ build:
   image: node:16-alpine
   stage: build-project
   script:
-    - WORKDIR /code/
-    - ADD package-lock.json .
-    - ADD package.json .
+    - cd /code/
+    - cp $CI_PROJECT_DIR/* /code/
     - RUN npm ci
-    - ADD . .
     - RUN npm run build
   artifacts:
     name: vueApp
