@@ -2,6 +2,7 @@ image: docker:latest
 
 stages:
   - build
+  - deploy
 
 build-image:
   stage: build
@@ -14,6 +15,13 @@ build-image:
     - echo "$DOCKER_PASSWORD" | docker login registry.cpe.granux.fr -u "$DOCKER_USERNAME" --password-stdin
     - docker buildx build --push --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t registry.cpe.granux.fr/hllmp/konzik-front:latest .
   when: manual
+
+deploy-image:
+  stage: deploy
+  script:
+    echo "$OVH" > "$HOME"/.ssh/id_rsa
+    ssh debian@162.19.68.172
+    docker service update --force --image registry.cpe.granux.fr/hllmp/konzik-front:latest runfront_runfront
 
   only:
     - master
