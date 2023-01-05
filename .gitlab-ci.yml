@@ -27,7 +27,7 @@ deploy-image:
     - ssh-keyscan $SERVER >> ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ls -l
+    - ssh $SERVER_USER@$SERVER "hostname && echo 'Welcome!!!' > welcome.txt"
 
   only:
     - master
