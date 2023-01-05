@@ -1,11 +1,31 @@
-image: docker:latest
+default:
+  image: docker:latest
+  tags:
+    - runner-l
 
 stages:
-  - build
+  - build-project
+  - build-image
   - deploy
 
+build:
+  image: node:16-alpine
+  stage: build-project
+  script:
+    - WORKDIR /code/
+    - ADD package-lock.json .
+    - ADD package.json .
+    - RUN npm ci
+    - ADD . .
+    - RUN npm run build
+  artifacts:
+    name: vueApp
+    paths:
+      - /code/dist/
+  when: manual
+
 build-image:
-  stage: build
+  stage: build-image
   script:
     #- docker build -t thomasoss/testrepo:latest -f Dockerfile .
     #- dnf install -y qemu-user-static binfmt-support
@@ -37,7 +57,3 @@ deploy-image:
 variables:
   DOCKER_USERNAME: $DOCKER_USERNAME
   DOCKER_PASSWORD: $DOCKER_PASSWORD
-
-default:
-  tags:
-    - runner-l
