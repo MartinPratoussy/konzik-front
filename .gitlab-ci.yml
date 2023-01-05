@@ -19,7 +19,7 @@ build-image:
 deploy-image:
   stage: deploy
   script:
-    #mkdir "$HOME"/.ssh
+    mkdir "$HOME"/.ssh
     ls "$HOME"/.ssh
     #echo "$OVH" > "$HOME"/.ssh/id_rsa
     #ssh debian@162.19.68.172
