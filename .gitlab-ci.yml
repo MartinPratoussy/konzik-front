@@ -12,16 +12,13 @@ build:
   image: node:16-alpine
   stage: build-project
   script:
-    - ls -l
-    - pwd
     - mkdir /code
     - cd /code/
-    - pwd
     - cp -r $CI_PROJECT_DIR/* /code/
     - npm ci
     - npm run build
-    - ls -l
-    - ls ./dist/ -l
+    - cd /builds/hllmp/konzik-front
+    - ls -l ../../../code/dist
   artifacts:
     name: vueApp
     paths:
