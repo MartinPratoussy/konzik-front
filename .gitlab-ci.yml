@@ -13,8 +13,10 @@ build:
   stage: build-project
   script:
     - ls -l
+    - pwd
     - mkdir /code
     - cd /code/
+    - pwd
     - cp -r $CI_PROJECT_DIR/* /code/
     - npm ci
     - npm run build
