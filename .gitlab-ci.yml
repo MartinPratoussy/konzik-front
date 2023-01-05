@@ -14,7 +14,7 @@ build:
   script:
     - mkdir /code
     - cd /code/
-    - cp $CI_PROJECT_DIR/* /code/
+    - cp -r $CI_PROJECT_DIR/* /code/
     - RUN npm ci
     - RUN npm run build
   artifacts:
