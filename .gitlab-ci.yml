@@ -20,7 +20,7 @@ build:
   artifacts:
     name: vueApp
     paths:
-      - ./dist/
+      - ./dist/*
   when: manual
 
 build-image:
