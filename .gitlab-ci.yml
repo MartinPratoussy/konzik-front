@@ -15,8 +15,8 @@ build:
     - mkdir /code
     - cd /code/
     - cp -r $CI_PROJECT_DIR/* /code/
-    - RUN npm ci
-    - RUN npm run build
+    - npm ci
+    - npm run build
   artifacts:
     name: vueApp
     paths:
