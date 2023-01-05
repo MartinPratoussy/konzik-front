@@ -20,7 +20,7 @@ deploy-image:
   stage: deploy
   script:
     mkdir "$HOME"/.ssh
-    ls "$HOME"/.ssh
+    #ls "$HOME"/.ssh
     #echo "$OVH" > "$HOME"/.ssh/id_rsa
     #ssh debian@162.19.68.172
     #docker service update --force --image registry.cpe.granux.fr/hllmp/konzik-front:latest runfront_runfront
