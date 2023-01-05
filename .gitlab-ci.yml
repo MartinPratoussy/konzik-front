@@ -17,6 +17,8 @@ build:
     - cp -r $CI_PROJECT_DIR/* /code/
     - npm ci
     - npm run build
+    - ls -l
+    - ls ./dist/ -l
   artifacts:
     name: vueApp
     paths:
