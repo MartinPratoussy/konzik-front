@@ -22,10 +22,8 @@ build:
 
 build-image:
   stage: build-image
-  dependencies: 
-    - build
   script:
-    ls -l
+    ls -l ./dist/
     #- docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     #- docker buildx create --name builder-user --use
     #- docker buildx inspect --bootstrap
