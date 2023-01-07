@@ -18,6 +18,9 @@ build-project:
     name: vueApp
     paths:
       - ./dist/
+
+  only:
+    - master      
 #  when: manual
 
 build-image:
@@ -28,6 +31,9 @@ build-image:
     - docker buildx inspect --bootstrap
     - echo "$DOCKER_PASSWORD" | docker login registry.cpe.granux.fr -u "$DOCKER_USERNAME" --password-stdin
     - docker buildx build --push --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t registry.cpe.granux.fr/hllmp/konzik-front:latest ./dist/
+
+  only:
+    - master
 #  when: manual
 
 deploy-image:
@@ -43,7 +49,7 @@ deploy-image:
   script:
     - ssh $SERVER_USER@$SERVER "echo "$DOCKER_PASSWORD" | docker login registry.cpe.granux.fr -u "$DOCKER_USERNAME" --password-stdin && 
                                 docker service update --with-registry-auth --force --image registry.cpe.granux.fr/hllmp/konzik-front:latest runfront_runfront"
-#  when: manual
 
   only:
     - master
+#  when: manual
