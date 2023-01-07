@@ -48,7 +48,7 @@ deploy-image:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ssh $SERVER_USER@$SERVER "echo "$DOCKER_PASSWORD" | docker login registry.cpe.granux.fr -u "$DOCKER_USERNAME" --password-stdin && 
-                                docker service update --with-registry-auth --force --image registry.cpe.granux.fr/hllmp/konzik-front:latest runfront_runfront"
+                                docker service update --with-registry-auth --force --image registry.cpe.granux.fr/hllmp/konzik-front:latest front_runfront"
 
   only:
     - master
