@@ -27,7 +27,7 @@ build-image:
     - docker buildx create --name builder-user --use
     - docker buildx inspect --bootstrap
     - echo "$DOCKER_PASSWORD" | docker login registry.cpe.granux.fr -u "$DOCKER_USERNAME" --password-stdin
-    - docker buildx build --push --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t registry.cpe.granux.fr/hllmp/konzik-front:latest .
+    - docker buildx build --push --platform linux/amd64,linux/arm64,linux/arm/v7 -f Dockerfile -t registry.cpe.granux.fr/hllmp/konzik-front:latest ./dist/
 #  when: manual
 
 deploy-image:
