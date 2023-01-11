@@ -12,9 +12,13 @@ const registerClick = () => {
     const password = passwordData.value
     const roles = [username, "ROLE_USER"]
 
+    const sendData2 = {"username":username, "email":email, "roles":roles, "password": password}
+    const obj = JSON.parse(sendData2);
+
     const sendData = {username, email, password, roles}
-    console.log(sendData)
-    axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup",sendData).then((response) => console.log(response))
+
+    console.log(obj)
+    axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup",obj).then((response) => console.log(response))
 }
 </script>
 
