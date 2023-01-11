@@ -13,4 +13,10 @@ app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)
 
+axios.defaults.headers.common = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+};
+
+
 app.mount('#app')

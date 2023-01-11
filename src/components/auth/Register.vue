@@ -10,11 +10,11 @@ const registerClick = () => {
     const username = usernameData.value
     const email = emailData.value
     const password = passwordData.value
-    const role = [username, "user"]
+    const role = [username, "ROLE_USER"]
 
     const sendData = {username, email, password, role}
     console.log(sendData)
-    //axios.post("localhost/api/auth/signup",sendData).then((response) => console.log(response))
+    axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup",sendData).then((response) => console.log(response))
 }
 </script>
 
