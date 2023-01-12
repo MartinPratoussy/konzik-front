@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import AxiosPlugin from 'vue-axios-cors';
 
 import App from './App.vue'     // App import
 import router from './router'   // Router import
@@ -13,6 +12,5 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)
-app.use(AxiosPlugin)
 
 app.mount('#app')
