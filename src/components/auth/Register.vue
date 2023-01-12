@@ -18,7 +18,11 @@ const registerClick = () => {
     const sendData = {username, email, password, roles}
 
     console.log(sendData)
-    axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup",sendData).then((response) => console.log(response))
+    axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup", {
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+    }}, sendData).then((response) => console.log(response))
 }
 </script>
 
