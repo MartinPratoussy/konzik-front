@@ -17,7 +17,7 @@ const registerClick = () => {
 
     const sendData = {username, email, password, roles}
 
-    console.log(obj)
+    console.log(sendData)
     axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup",sendData).then((response) => console.log(response))
 }
 </script>
