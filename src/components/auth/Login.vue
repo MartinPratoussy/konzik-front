@@ -25,6 +25,7 @@ const loginClick = () => {
 
   axios(config)
   .then(function (response) {
+    localStorage.setItem("token", response.data.accessToken)
     console.log(JSON.stringify(response.data));
   })
   .catch(function (error) {

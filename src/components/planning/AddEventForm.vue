@@ -2,22 +2,48 @@
 import { ref } from 'vue';
 import axios from 'axios'
 
-const name = ref("")
-const type = ref("")
+const artist = ref("")
+const genre = ref("")
 const date = ref("")
-const place = ref("")
+const location = ref("")
 const city = ref("")
 const country = ref("")
 
 const addNewEvent = () => {
-  send_name = name.value
-  type_value = type.value
+  artist_value = artist.value
+  genre_value = genre.value
   date_value = date.value
-  place_value = place.value
+  location_value = location.value
   city_value = city.value
   country_value = country.value
 
-  // axios.post("localhost/add",{ send_name, type_value, date_value, place_value, city_value, country_value }).then((response) => console.log(response))
+  var data = JSON.stringify({
+    "artist": artist_value,
+    "genre": genre_value,
+    "date": date_value,
+    "location": location_value,
+    "city": city_value,
+    "country": country_value
+  });
+
+  var config = {
+    method: 'post',
+    url: 'api.descours.cc/CONCERT-SERVICE/api/concert/add',
+    headers: { 
+      'Authentication': 'Bearer ' + localStorage.getItem("token"),
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
 }
 </script>
 
@@ -26,10 +52,10 @@ const addNewEvent = () => {
 <div class="block p-6 rounded-lg shadow-lg bg-white w-96">
   <form>
     <div class="w-full text-center pb-5 text-xl font-bold">
-        <h1>Ajouter un evenement</h1>
+        <h1>Ajouter un événement</h1>
     </div>
     <div class="form-group mb-6">
-      <input type="text" v-model="name" class="form-control block
+      <input type="text" v-model="artist" class="form-control block
         w-full
         px-3
         py-1.5
@@ -46,7 +72,7 @@ const addNewEvent = () => {
         placeholder="Nom">
     </div>
     <div class="form-group mb-6">
-      <input type="text" v-model="type" class="form-control block
+      <input type="text" v-model="genre" class="form-control block
         w-full
         px-3
         py-1.5
@@ -60,7 +86,7 @@ const addNewEvent = () => {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Type">
+        placeholder="Genre">
     </div>
     <div class="form-group mb-6">
       <input type="text" v-model="date" class="form-control block
@@ -80,7 +106,7 @@ const addNewEvent = () => {
         placeholder="Date (dd/mm/yy)">
     </div>
     <div class="form-group mb-6">
-      <input type="text" v-model="place" class="form-control block
+      <input type="text" v-model="location" class="form-control block
         w-full
         px-3
         py-1.5
