@@ -10,19 +10,33 @@ const registerClick = () => {
     const username = usernameData.value
     const email = emailData.value
     const password = passwordData.value
-    const roles = [username, "ROLE_USER"]
 
-    // const sendData2 = {"username":username, "email":email, "roles":roles, "password": password}
-    // const obj = JSON.parse(sendData2);
+    var data = JSON.stringify({
+    "username": username,
+    "email": email,
+    "roles": [
+        username,
+        "ROLE_USER"
+    ],
+    "password": password
+    });
 
-    const sendData = {username, email, password, roles}
+    var config = {
+    method: 'post',
+    url: 'https://api.descours/cc/AUTH-SERVICE/api/auth/signup',
+    headers: { 
+        'Content-Type': 'application/json'
+    },
+    data : data
+    };
 
-    console.log(sendData)
-    axios.post("https://api.descours.cc/AUTH-SERVICE/api/auth/signup", {
-    headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-    }}, sendData).then((response) => console.log(response))
+    axios(config)
+    .then(function (response) {
+    console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+    console.log(error);
+    });
 }
 </script>
 

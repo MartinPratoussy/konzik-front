@@ -2,12 +2,34 @@
 import { useAuthStore } from '@/stores/auth';
 import { ref } from 'vue';
 
-const username = ref("")
-const password =  ref("")
+const usernameData = ref("")
+const passwordData =  ref("")
 
-const onSubmit = () => {
-  const authStore = useAuthStore()
-  return authStore.login(username.value, password.value)
+const loginClick = () => {
+  const username = usernameData.value
+  const password = passwordData.value
+
+  var data = JSON.stringify({
+    "username": username,
+    "password": password
+  });
+
+  var config = {
+    method: 'post',
+    url: 'https://api.descours.cc/AUTH-SERVICE/api/auth/signin',
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : data
+  };
+
+  axios(config)
+  .then(function (response) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 </script>
 
@@ -54,7 +76,7 @@ const onSubmit = () => {
     <a href="#!"
       class="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Mot de passe oublié ?</a>
   </div>
-  <button @click="onSubmit" class="
+  <button @click="loginClick" class="
     w-full
     px-6
     py-2.5
