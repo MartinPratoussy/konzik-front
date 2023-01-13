@@ -23,7 +23,7 @@ const registerClick = () => {
 
     var config = {
     method: 'post',
-    url: 'https://api.descours/cc/AUTH-SERVICE/api/auth/signup',
+    url: 'https://api.descours.cc/AUTH-SERVICE/api/auth/signup',
     headers: { 
         'Content-Type': 'application/json'
     },
