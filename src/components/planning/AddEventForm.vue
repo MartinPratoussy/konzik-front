@@ -30,7 +30,7 @@ const addNewEvent = () => {
     method: 'post',
     url: 'api.descours.cc/CONCERT-SERVICE/api/concert/add',
     headers: { 
-      'Authentication': 'Bearer ' + localStorage.getItem("token"),
+      'Authorization': 'Bearer ' + localStorage.getItem("token"),
       'Content-Type': 'application/json'
     },
     data : data
