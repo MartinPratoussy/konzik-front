@@ -41,7 +41,7 @@ export const useAuthStore = defineStore({
             };
             
             let userExist = false
-            const userReponseData = {}
+            let userReponseData = {}
 
             axios(config)
                 .then(function (response) {
