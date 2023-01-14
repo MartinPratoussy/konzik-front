@@ -45,7 +45,7 @@ export const useAuthStore = defineStore({
 
             axios(config)
                 .then(function (response) {
-                    if ("accessToken" in response.data.accessToken)
+                    if (response.data.hasOwnProperty("accessToken"))
                     userExist = true
                     userReponseData = response.data
                     console.log(JSON.stringify(userReponseData));
