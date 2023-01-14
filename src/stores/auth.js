@@ -47,7 +47,7 @@ export const useAuthStore = defineStore({
 
                         // store the token and create the user
                         localStorage.setItem("token", response.data.accessToken)
-                        this.user = [{ id: response.data.id, email: response.data.email, username: response.data.username, roles: response.data.roles }];
+                        //this.user = [{ id: response.data.id, email: response.data.email, username: response.data.username, roles: response.data.roles }];
 
                         // store user details and jwt in local storage to keep user logged in between page refreshes
                         localStorage.setItem('user', username);
