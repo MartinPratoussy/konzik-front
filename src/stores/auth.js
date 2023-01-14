@@ -54,6 +54,9 @@ export const useAuthStore = defineStore({
                     console.log(error);
             });
 
+            console.log(userExist)
+            console.log(userReponseData.username)
+
             if (userExist == true) {
                 // store the token and create the user
                 localStorage.setItem("token", userReponseData.accessToken)
@@ -70,6 +73,7 @@ export const useAuthStore = defineStore({
         logout() {
             this.user = null;
             localStorage.removeItem('user');
+            localStorage.removeItem('token');
             this.userEvents = []
             router.push('/login');
         },
