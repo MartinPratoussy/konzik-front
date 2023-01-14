@@ -39,36 +39,23 @@ export const useAuthStore = defineStore({
                 },
                 data : data
             };
-            
-            let userExist = false
-            let userReponseData = {}
 
             axios(config)
                 .then(function (response) {
-                    console.log(response.data)
-                    userReponseData = JSON.stringify(response.data)
-                    console.log(userReponseData)
-                    if (userReponseData.hasOwnProperty("accessToken")){
-                        userExist = true
+                    if (response.data.hasOwnProperty("accessToken")){
+                        // store the token and create the user
+                        localStorage.setItem("token", response.data.accessToken)
+                        this.user = [{ id: response.data.id, email: response.data.email, username: response.data.username, roles: response.data.roles }];
+
+                        // store user details and jwt in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('user', response.data.username);
+    
+                        // redirect to previous url or default to home page
+                        router.push(this.returnUrl || '/');
                     }
                 }).catch(function (error) {
                     console.log(error);
             });
-
-            console.log(userExist)
-            console.log(userReponseData.username)
-
-            if (userExist == true) {
-                // store the token and create the user
-                localStorage.setItem("token", userReponseData.accessToken)
-                this.user = [{ id: userReponseData.id, email: userReponseData.email, username: userReponseData.username, roles: userReponseData.roles }];
-
-                // store user details and jwt in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', userReponseData.username);
-    
-                // redirect to previous url or default to home page
-                router.push(this.returnUrl || '/');
-            }
         },
 
         logout() {
