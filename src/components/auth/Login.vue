@@ -41,7 +41,7 @@ const loginClick = () => {
 <div class="block p-7 rounded-xl shadow-2xl bg-white w-96 h-80">
   <h1 class="w-full text-2xl font-bold text-center pb-5">Connectez-vous</h1>
   <div class="form-group mb-6">
-    <input name="username" v-model="username" type="text" class="form-control
+    <input name="username" v-model="usernameData" type="text" class="form-control
       block
       w-full
       px-3
@@ -59,7 +59,7 @@ const loginClick = () => {
       placeholder="Nom d'utilisateur">
   </div>
   <div class="form-group mb-6">
-    <input name="password" v-model="password" type="password" class="form-control block
+    <input name="password" v-model="passwordData" type="password" class="form-control block
       w-full
       px-3
       py-1.5
