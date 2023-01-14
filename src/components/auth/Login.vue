@@ -1,6 +1,7 @@
 <script setup>
-import { useAuthStore } from '@/stores/auth';
 import { ref } from 'vue';
+import axios from 'axios'
+
 
 const usernameData = ref("")
 const passwordData =  ref("")
@@ -32,6 +33,7 @@ const loginClick = () => {
     console.log(error);
   });
 }
+
 </script>
 
 <template>
