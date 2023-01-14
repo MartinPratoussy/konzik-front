@@ -1,37 +1,17 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios'
-
+import { useAuthStore } from '@/stores/auth';
 
 const usernameData = ref("")
 const passwordData =  ref("")
+const authStore = useAuthStore()
 
 const loginClick = () => {
   const username = usernameData.value
   const password = passwordData.value
 
-  var data = JSON.stringify({
-    "username": username,
-    "password": password
-  });
-
-  var config = {
-    method: 'post',
-    url: 'https://api.descours.cc/AUTH-SERVICE/api/auth/signin',
-    headers: { 
-      'Content-Type': 'application/json'
-    },
-    data : data
-  };
-
-  axios(config)
-  .then(function (response) {
-    localStorage.setItem("token", response.data.accessToken)
-    console.log(JSON.stringify(response.data));
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+  authStore.login(username,password)
 }
 
 </script>

@@ -25,19 +25,46 @@ export const useAuthStore = defineStore({
 
     actions: {
         async login(username, password) {
-            // // send request
-            // const user = await axios.post("localhost/api/auth/signin", { username, password }).then((response) => console.log(response))
+
+            var data = JSON.stringify({
+                "username": username,
+                "password": password
+            });
             
-            // // update pinia state
-            // this.user = user;
+            var config = {
+                method: 'post',
+                url: 'https://api.descours.cc/AUTH-SERVICE/api/auth/signin',
+                headers: { 
+                  'Content-Type': 'application/json'
+                },
+                data : data
+            };
+            
+            let userExist = false
+            const userReponseData = {}
 
-            this.user = [{ id: 1, email: 'admin@gmail.com', username: 'admin', password: 'admin' }];
+            axios(config)
+                .then(function (response) {
+                    if ("accessToken" in response.data.accessToken)
+                    userExist = true
+                    userReponseData = response.data
+                    console.log(JSON.stringify(userReponseData));
+                }).catch(function (error) {
+                    console.log(error);
+            });
 
-            // store user details and jwt in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', username);
 
-            // redirect to previous url or default to home page
-            router.push(this.returnUrl || '/');
+            if (userExist == true) {
+                // store the token and create the user
+                localStorage.setItem("token", userReponseData.accessToken)
+                this.user = [{ id: userReponseData.id, email: userReponseData.email, username: userReponseData.username, roles: userReponseData.roles }];
+
+                // store user details and jwt in local storage to keep user logged in between page refreshes
+                localStorage.setItem('user', userReponseData.username);
+    
+                // redirect to previous url or default to home page
+                router.push(this.returnUrl || '/');
+            }
         },
 
         logout() {
