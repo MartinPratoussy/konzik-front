@@ -6,11 +6,13 @@ const props = defineProps({
 });
 
 const removeEvent = () => {
+  console.log(+props.currentEvent)
   var config = {
     method: 'delete',
     url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/users/'+localStorage.getItem('user')+'/remove/'+props.currentEvent.idEvent,
-    headers: { 
-        'Content-Type': 'application/json'
+    headers: {
+      'Authorization': 'Bearer ' + localStorage.getItem("token"),
+      'Content-Type': 'application/json'
     }
     };
 
