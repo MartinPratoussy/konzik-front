@@ -11,8 +11,7 @@ const removeEvent = () => {
     url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/users/'+localStorage.getItem('user')+'/remove/'+props.currentEvent.idEvent,
     headers: { 
         'Content-Type': 'application/json'
-    },
-    data : data
+    }
     };
 
     axios(config)
