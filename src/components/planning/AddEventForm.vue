@@ -17,7 +17,7 @@ const addNewEvent = () => {
     "location": location.value,
     "city": city.value,
     "country": country.value,
-    "username": localStorage.getItem('user')
+    "requestSenderUsername": localStorage.getItem('user')
   });
 
   console.log(data)
