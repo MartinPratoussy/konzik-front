@@ -6,7 +6,7 @@ const props = defineProps({
 });
 
 const removeEvent = () => {
-  console.log(+props.currentEvent)
+  console.log(props.currentEvent)
   var config = {
     method: 'delete',
     url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/users/'+localStorage.getItem('user')+'/remove/'+props.currentEvent.idEvent,
