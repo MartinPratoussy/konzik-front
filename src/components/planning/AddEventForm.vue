@@ -159,7 +159,7 @@ const addNewEvent = () => {
         placeholder="Pays">
     </div>
     <div class="flex gap-x-2">
-      <button type="button" @click="addNewEvent, $emit('close')" class="
+      <button type="button" @click="addNewEvent().$emit('close')" class="
         w-full
         px-6
         py-2.5
