@@ -10,20 +10,14 @@ const city = ref("")
 const country = ref("")
 
 const addNewEvent = () => {
-  artist_value = artist.value
-  genre_value = genre.value
-  date_value = date.value
-  location_value = location.value
-  city_value = city.value
-  country_value = country.value
-
   var data = JSON.stringify({
-    "artist": artist_value,
-    "genre": genre_value,
-    "date": date_value,
-    "location": location_value,
-    "city": city_value,
-    "country": country_value
+    "artist": artist.value,
+    "genre": genre.value,
+    "date": date.value,
+    "location": location.value,
+    "city": city.value,
+    "country": country.value,
+    "username": localStorage.getItem('user')
   });
 
   console.log(data)
