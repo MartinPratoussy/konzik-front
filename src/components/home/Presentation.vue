@@ -20,14 +20,6 @@ import WelcomeItem from "./PresentationItem.vue";
 
   <WelcomeItem>
     <template #icon>
-      <img src="@/images/home/tools.png" />
-    </template>
-    <template #heading>Technologies</template>
-    <h2 class="text-lg font-semibold">Front</h2>
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
       <img src="@/images/home/membres.png" />
     </template>
     <template #heading>Membres</template>

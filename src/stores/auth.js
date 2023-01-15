@@ -96,7 +96,7 @@ export const useAuthStore = defineStore({
 
             axios(config)
                 .then((response) => {
-                    response.data.forEach(el => this.addEvent(el.idEvent, el.date, el.artist, el.genre, el.location, el.city, el.country))
+                    response.data.forEach(el => this.addUserEvent(el.idEvent, el.date, el.artist, el.genre, el.location, el.city, el.country))
                 })
                 .catch(function (error) {
                 console.log(error);
