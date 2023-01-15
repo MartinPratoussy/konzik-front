@@ -1,7 +1,28 @@
 <script setup>
+import axios from 'axios'
+
 const props = defineProps({
   currentEvent: Object
 });
+
+const removeEvent = () => {
+  var config = {
+    method: 'delete',
+    url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/users/'+localStorage.getItem('user')+'/remove/'+props.currentEvent.idEvent,
+    headers: { 
+        'Content-Type': 'application/json'
+    },
+    data : data
+    };
+
+    axios(config)
+    .then((response) => {
+    console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+    console.log(error);
+    });
+}
 </script>
 
 <template>
@@ -24,7 +45,7 @@ const props = defineProps({
         <p class="text-gray-600 text-sm">{{ props.currentEvent.country }}</p>
       </div>
     </div>
-    <button class="px-4 mr-1 rounded-lg bg-red-600 hover:bg-red-700 h-10">Enlever</button>
+    <button class="px-4 mr-1 rounded-lg bg-red-600 hover:bg-red-700 h-10" @click="removeEvent()">Enlever</button>
   </div>
   </div>
 </div>

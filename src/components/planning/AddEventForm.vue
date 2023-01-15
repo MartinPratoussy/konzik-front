@@ -65,7 +65,7 @@ const addNewEvent = () => {
         ease-in-out
         m-0
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder="Nom">
+        placeholder="Artiste">
     </div>
     <div class="form-group mb-6">
       <input type="text" v-model="genre" class="form-control block
