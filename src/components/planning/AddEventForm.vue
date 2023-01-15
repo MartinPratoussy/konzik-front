@@ -28,7 +28,7 @@ const addNewEvent = () => {
 
   var config = {
     method: 'post',
-    url: 'api.descours.cc/CONCERT-SERVICE/api/concert/add',
+    url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/add',
     headers: { 
       'Authorization': 'Bearer ' + localStorage.getItem("token"),
       'Content-Type': 'application/json'

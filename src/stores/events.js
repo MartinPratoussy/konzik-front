@@ -31,7 +31,7 @@ export const useEventStore = defineStore('eventStore', {
 
       var config = {
         method: 'get',
-        url: 'api.descours.cc/CONCERT-SERVICE/api/concert/all',
+        url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/all',
         headers: { 
             'Authorization': 'Bearer ' + localStorage.getItem("token"),
             'Content-Type': 'application/json'

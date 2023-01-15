@@ -87,7 +87,7 @@ export const useAuthStore = defineStore({
 
             var config = {
                 method: 'get',
-                url: 'api.descours.cc/CONCERT-SERVICE/api/concert/users/'+localStorage.getItem('user')+'/all',
+                url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/users/'+localStorage.getItem('user')+'/all',
                 headers: { 
                     'Authorization': 'Bearer ' + localStorage.getItem("token"),
                     'Content-Type': 'application/json'
