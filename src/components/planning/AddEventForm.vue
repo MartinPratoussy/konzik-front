@@ -26,6 +26,8 @@ const addNewEvent = () => {
     "country": country_value
   });
 
+  console.log(data)
+
   var config = {
     method: 'post',
     url: 'https://api.descours.cc/CONCERT-SERVICE/api/concert/add',
