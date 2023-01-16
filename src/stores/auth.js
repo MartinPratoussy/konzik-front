@@ -71,8 +71,8 @@ export const useAuthStore = defineStore({
         },
 
         // Add new event in the store
-        addUserEvent(idEvent, date, artist, genre, location, city, country) {
-            this.userEvents.push({idEvent, date, artist, genre, location, city, country})
+        addUserEvent(id, date, artist, genre, location, city, country) {
+            this.userEvents.push({id, date, artist, genre, location, city, country})
         },
     
         // Add new event in the store
@@ -96,7 +96,7 @@ export const useAuthStore = defineStore({
 
             axios(config)
                 .then((response) => {
-                    response.data.forEach(el => this.addUserEvent(el.idEvent, el.date, el.artist, el.genre, el.location, el.city, el.country))
+                    response.data.forEach(el => this.addUserEvent(el.id, el.date, el.artist, el.genre, el.location, el.city, el.country))
                 })
                 .catch(function (error) {
                 console.log(error);
