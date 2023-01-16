@@ -40,7 +40,8 @@ export const useEventStore = defineStore('eventStore', {
 
     axios(config)
         .then((response) => {
-            response.data.forEach(el => this.addEvent(el.idEvent, el.date, el.artist, el.genre, el.location, el.city, el.country))
+          console.log(response.data)
+          response.data.forEach(el => this.addEvent(el.idEvent, el.date, el.artist, el.genre, el.location, el.city, el.country))
         })
         .catch(function (error) {
         console.log(error);
